@@ -12,6 +12,8 @@
 		7489BB05206A7A91004D578E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7489BB03206A7A91004D578E /* Main.storyboard */; };
 		7489BB07206A7A91004D578E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7489BB06206A7A91004D578E /* Assets.xcassets */; };
 		7489BB0A206A7A91004D578E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7489BB08206A7A91004D578E /* LaunchScreen.storyboard */; };
+		74E94214206BB61400AC709A /* Concentration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E94213206BB61400AC709A /* Concentration.swift */; };
+		74E94216206BB6F700AC709A /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E94215206BB6F700AC709A /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		7489BB06206A7A91004D578E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7489BB09206A7A91004D578E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7489BB0B206A7A91004D578E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		74E94213206BB61400AC709A /* Concentration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Concentration.swift; sourceTree = "<group>"; };
+		74E94215206BB6F700AC709A /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,8 @@
 			isa = PBXGroup;
 			children = (
 				7489BB01206A7A91004D578E /* ViewController.swift */,
+				74E94213206BB61400AC709A /* Concentration.swift */,
+				74E94215206BB6F700AC709A /* Card.swift */,
 				7489BB03206A7A91004D578E /* Main.storyboard */,
 				7489BB11206A7BC5004D578E /* Supporting Files */,
 				7489BB0B206A7A91004D578E /* Info.plist */,
@@ -146,6 +152,8 @@
 			files = (
 				7489BB02206A7A91004D578E /* ViewController.swift in Sources */,
 				7489BB00206A7A91004D578E /* AppDelegate.swift in Sources */,
+				74E94214206BB61400AC709A /* Concentration.swift in Sources */,
+				74E94216206BB6F700AC709A /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
