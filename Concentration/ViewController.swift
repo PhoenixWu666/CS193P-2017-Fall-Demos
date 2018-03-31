@@ -27,9 +27,9 @@ class ViewController: UIViewController {
     
     private var emojiDictionary = [Int : String]()
     
-    @IBOutlet var cardButtons: [UIButton]!
+    @IBOutlet private var cardButtons: [UIButton]!
     
-    @IBOutlet weak var flipCountLabel: UILabel!
+    @IBOutlet private weak var flipCountLabel: UILabel!
     
     private func emoji(for card: Card) -> String {
         if emojiDictionary[card.identifier] == nil, emojiChoices.count > 0 {
