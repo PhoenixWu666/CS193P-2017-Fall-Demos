@@ -116,3 +116,15 @@ extension Int {
     }
 }
 
+extension String {
+    static func isEmptyString(src: String?) -> Bool {
+        return src == nil || src!.trimmingCharacters(in: CharacterSet(charactersIn: " ")).isEmpty
+    }
+}
+
+extension Concentration {
+    func sayHello() {
+        print(self.cards)
+    }
+}
+
