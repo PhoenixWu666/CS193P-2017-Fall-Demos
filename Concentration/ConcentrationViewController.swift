@@ -14,7 +14,7 @@ class ConcentrationViewController: UIViewController {
     private lazy var game = Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
     
     var numberOfPairsOfCards: Int {
-        return (cardButtons.count + 1) / 2
+        return (visibleCardButtons.count + 1) / 2
     }
     
     private(set) var flipCount = 0 {
@@ -31,6 +31,10 @@ class ConcentrationViewController: UIViewController {
     
     @IBOutlet var cardButtons: [UIButton]!
     
+    var visibleCardButtons: [UIButton]! {
+        return cardButtons?.filter { !$0.superview!.isHidden }
+    }
+    
     var theme: String? {
         didSet {
             emojiChoices = theme ?? ""
@@ -43,6 +47,20 @@ class ConcentrationViewController: UIViewController {
         didSet {
             updateFlipCountLabel()
         }
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        print("traitCollectionDidChange")
+        
+        updateFlipCountLabel()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        print("viewDidLayoutSubviews")
+        
+        updateViewFromModel()
     }
     
     private func updateFlipCountLabel() {
@@ -65,18 +83,18 @@ class ConcentrationViewController: UIViewController {
     }
     
     func updateViewFromModel() {
-        if cardButtons != nil {
-            for index in cardButtons.indices {
-                let button = cardButtons[index]
-                let card = game.cards[index]
-                
-                if card.isFaceUp {
-                    button.setTitle(emoji(for: card), for: UIControlState.normal)
-                    button.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-                } else {
-                    button.setTitle("", for: UIControlState.normal)
-                    button.backgroundColor = card.isMatched ? #colorLiteral(red: 0.9994830489, green: 0.6620230675, blue: 0.1431986988, alpha: 0) : #colorLiteral(red: 0.1158126187, green: 0.1600519192, blue: 0.9994830489, alpha: 1)
-                }
+        guard visibleCardButtons != nil else { return }
+        
+        for index in visibleCardButtons.indices {
+            let button = visibleCardButtons[index]
+            let card = game.cards[index]
+            
+            if card.isFaceUp {
+                button.setTitle(emoji(for: card), for: UIControlState.normal)
+                button.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            } else {
+                button.setTitle("", for: UIControlState.normal)
+                button.backgroundColor = card.isMatched ? #colorLiteral(red: 0.9994830489, green: 0.6620230675, blue: 0.1431986988, alpha: 0) : #colorLiteral(red: 0.1158126187, green: 0.1600519192, blue: 0.9994830489, alpha: 1)
             }
         }
     }
@@ -84,7 +102,7 @@ class ConcentrationViewController: UIViewController {
     @IBAction func touchCard(_ sender: UIButton) {
         flipCount += 1
         
-        if let cardNumber = cardButtons.index(of: sender) {
+        if let cardNumber = visibleCardButtons.index(of: sender) {
             game.chooseCard(at: cardNumber)
             updateViewFromModel()
         } else {
